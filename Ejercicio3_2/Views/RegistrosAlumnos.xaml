@@ -1,0 +1,41 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Ejercicio3_2.ViewModels"
+             x:Class="Ejercicio3_2.Views.RegistrosAlumnos"
+             Title="Nuevo Registro">
+
+    <ContentPage.BindingContext>
+        <viewModels:RegistrosAlumnosViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Padding="20">
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Spacing="20">
+                <Image Source="{Binding Foto}" WidthRequest="150" HeightRequest="150"
+                       Aspect="AspectFill" HorizontalOptions="Center"/>
+                <Button Text="Tomar Fotografía" Command="{Binding TomarFotoCommand}" BackgroundColor="#6AB04C"
+                        CornerRadius="10" WidthRequest="150" TextColor="White"/>
+            </StackLayout>
+
+            <Label Text="Nombres del Alumno" FontSize="16" TextColor="#333333" Margin="0,10,0,5"/>
+            <Entry Placeholder="Ingrese nombres" Text="{Binding Nombres}" />
+
+            <Label Text="Apellidos del Alumno" FontSize="16" TextColor="#333333" Margin="0,10,0,5"/>
+            <Entry Placeholder="Ingrese apellidos" Text="{Binding Apellidos}" />
+
+            <Label Text="Sexo" FontSize="16" TextColor="#333333" Margin="0,10,0,5"/>
+            <Picker Title="Seleccione sexo" SelectedIndex="{Binding SexoIndex}">
+                <Picker.Items>
+                    <x:String>Maculino</x:String>
+                    <x:String>Femenino</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Dirección" FontSize="16" TextColor="#333333" Margin="0,10,0,5"/>
+            <Entry Placeholder="Ingrese dirección" Text="{Binding Direccion}" />
+
+            <Button Text="Guardar" WidthRequest="150" BackgroundColor="#3498DB" TextColor="White"
+                    CornerRadius="10" Command="{Binding GuardarCommand}" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Ejercicio3_2.ViewModels"
+             x:Class="Ejercicio3_2.Views.ListaRegistrosAlumnos"
+             Title="Lista de Alumnos">
+
+    <ContentPage.BindingContext>
+        <viewModels:ListaRegistrosAlumnosViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Spacing="10" Padding="20">
+       <ListView ItemsSource="{Binding AlumnosCollection}" ItemTapped="OnItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="100">
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Image Source="{Binding Foto}" WidthRequest="150" HeightRequest="150"
+                                Aspect="AspectFit"/>
+                            <Label Text="{Binding Nombres}" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Nuevo Registro" BackgroundColor="#3498DB" TextColor="White"
+                CornerRadius="8" Command="{Binding IrANuevoRegistroCommand}"/>
+        <Button Text="Actualizar Registro" BackgroundColor="#3498DB" TextColor="White"
+                CornerRadius="8" Command="{Binding ActualizarRegistroCommand}"/>
+
+        <Button Text="Eliminar" BackgroundColor="#E74C3C" TextColor="White" CornerRadius="8"
+                Command="{Binding EliminarAlumnoCommand}" CommandParameter="{Binding AlumnoSeleccionado}"/>
+
+    </StackLayout>
+</ContentPage>
